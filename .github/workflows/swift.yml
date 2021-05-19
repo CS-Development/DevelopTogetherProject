@@ -19,6 +19,7 @@ jobs:
         uses: actions/checkout@main
       - name: Build and test
         run: |
-          xcodebuild clean test -workspace "/Source/XCode/Apps/CookingApp/CookingApp.xcworkspace" -scheme "CookingApp" -destination "${destination}" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
+          cd "Source/XCode/Apps/CookingApp/"
+          xcodebuild clean build -project "CookingApp.xcodeproj" -scheme "CookingApp" -destination "${destination}" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
         env:
          destination: ${{ matrix.destination }}
